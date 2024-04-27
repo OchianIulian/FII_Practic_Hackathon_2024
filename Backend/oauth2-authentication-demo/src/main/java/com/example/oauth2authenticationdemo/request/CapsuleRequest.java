@@ -7,6 +7,6 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor(force = true)
 @ToString
-public class PostRequest {
+public class CapsuleRequest {
     public final String message;
 }

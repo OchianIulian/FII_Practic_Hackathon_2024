@@ -1,8 +1,8 @@
 package com.example.oauth2authenticationdemo.controller;
 
 
-import com.example.oauth2authenticationdemo.request.PostRequest;
-import com.example.oauth2authenticationdemo.service.PostService;
+import com.example.oauth2authenticationdemo.request.CapsuleRequest;
+import com.example.oauth2authenticationdemo.service.CapsuleService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("post")
 public class PostController {
     @Autowired
-    private PostService postService;
+    private CapsuleService capsuleService;
 
     /**
      * Create a new post
@@ -21,8 +21,8 @@ public class PostController {
      * @return
      */
     @PostMapping("/create")
-    public ResponseEntity<String> createPost(@RequestBody PostRequest postRequest){
-        return postService.createPost(postRequest);
+    public ResponseEntity<String> createPost(@RequestBody CapsuleRequest postRequest){
+        return capsuleService.createPost(postRequest);
     }
 
     @GetMapping("/get-post-by-id")
