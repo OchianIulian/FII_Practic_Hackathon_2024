@@ -1,24 +1,31 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import React from 'react'
 import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar/Navbar";
+import CreateCapsule from './components/CreateCapsule/CreateCapsule';
+import Contact from './components/Contact/Contact';
+import PrivateCapsules from './components/PrivateCapsules/PrivateCapsules';
+import {MyCapsules} from './components/MyCapsules/MyCapsules';
+import {Home} from './components/Home/Home';
 import Login from "./components/Login/Login";
-import { Route, Routes } from "react-router-dom";
-import { MyCapsules } from "./components/MyCapsules/MyCapsules";
-import { Home } from "./components/Home/Home";
+import Unlocked from './components/Unlocked/Unlocked';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      {/* <Navbar></Navbar> */}
-      <Routes>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/mycapsules" element={<MyCapsules />}></Route>
-        <Route path="/home" element={<Home />}></Route>
-      </Routes>
-    </>
+ <>
+      <Navbar/>
+      <main className="main-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/create-capsule" element={<CreateCapsule />} />
+          <Route path="/private-capsules" element={<PrivateCapsules />} />
+          <Route path="/my-capsules" element={<MyCapsules />} />
+          <Route path="/unlocked/:id" component={Unlocked} />
+          <Route path="/login" element={<Login/>}/>
+        </Routes>
+      </main>
+      </>
   );
 }
 
