@@ -13,9 +13,9 @@ public class CapsuleService {
     @Autowired
     CapsuleRepository capsuleRepository;
 
-//    public ResponseEntity<String> createPost(CapsuleRequest capsuleRequest) {
-//        Capsule capsule = new Capsule(capsuleRequest.getMessage());
-//        capsuleRepository.save(capsule);
-//        return ResponseEntity.ok("Capsule created successfully");
-//    }
+    public ResponseEntity<String> createCapsule(CapsuleRequest capsuleRequest) {
+        Capsule capsule = new Capsule(capsuleRequest.getUserId(), capsuleRequest.getTitle(), capsuleRequest.getDescription(), capsuleRequest.getTxtContent(), capsuleRequest.getImages(), capsuleRequest.getVideos(), capsuleRequest.getCanBeOpenedAt());
+        capsuleRepository.save(capsule);
+        return ResponseEntity.ok("Capsule created successfully");
+    }
 }
