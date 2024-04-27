@@ -1,23 +1,12 @@
 .feed {
-  /* width: 80%; */
-
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, auto));
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-
-  grid-column-gap: 8px;
-  grid-row-gap: 14px;
-
-  margin-top: 15px;
+  padding: 20px;
+  overflow-y: scroll;
 }
 
 .capsuleCard {
-  height: 190px;
-  width: 320px;
-
-  border-radius: 25px;
-
   display: flex;
   flex-direction: column;
 
@@ -45,12 +34,14 @@
   z-index: 2;
 }
 
-/* .backgroundImage {
-  background-image: url("https://source.unsplash.com/random?family");
-  background-size: cover;
-  width: 100%;
-  height: 100%;
-} */
+.cardContent {
+  margin-left: 10px;
+}
+
+.icon {
+  font-size: 24px;
+  color: #555;
+}
 
 .title {
   padding-left: 9px;
