@@ -28,111 +28,24 @@ export const ScrollableFeed = ({ requestType }) => {
     fetchData();
   }, []);
 
+  const unlocked = {
+    display: "none",
+  };
+
   return (
     <div className={styles.feed}>
-      <FontAwesomeIcon
-        className={styles.icon}
-        icon="fa-regular fa-hourglass-half"
-      />
-
       <Link key="id" to="#" className={styles.capsuleCard}>
-        <FontAwesomeIcon
-          className={styles.icon}
-          icon="fa-regular fa-hourglass-half"
-        />
+        <div style={1 ? null : { display: "none" }}>
+          <img
+            className={styles.icon}
+            src="src\assets\icons\very-good-hourglass.svg"
+          ></img>
+        </div>
         <h2 className={styles.title}> Titlu</h2>
         <p className={styles.description}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit dolorum
           ipsa,
         </p>{" "}
-        {/* <div className={styles.icon}>
-          <img src="src\assets\icons\hourglass-half-regular (1).svg"></img>
-        </div> */}
-      </Link>
-
-      <Link key="id" to="#" className={styles.capsuleCard}>
-        <FontAwesomeIcon
-          className={styles.icon}
-          icon="fa-regular fa-hourglass-half"
-        />
-        <h2 className={styles.title}> Titlu</h2>
-        <p className={styles.description}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit dolorum
-          ipsa,
-        </p>{" "}
-        {/* <div className={styles.icon}>
-          <img src="src\assets\icons\hourglass-half-regular (1).svg"></img>
-        </div> */}
-      </Link>
-      <Link key="id" to="#" className={styles.capsuleCard}>
-        <FontAwesomeIcon
-          className={styles.icon}
-          icon="fa-regular fa-hourglass-half"
-        />
-        <h2 className={styles.title}> Titlu</h2>
-        <p className={styles.description}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit dolorum
-          ipsa,
-        </p>{" "}
-        {/* <div className={styles.icon}>
-          <img src="src\assets\icons\hourglass-half-regular (1).svg"></img>
-        </div> */}
-      </Link>
-      <Link key="id" to="#" className={styles.capsuleCard}>
-        <FontAwesomeIcon
-          className={styles.icon}
-          icon="fa-regular fa-hourglass-half"
-        />
-        <h2 className={styles.title}> Titlu</h2>
-        <p className={styles.description}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit dolorum
-          ipsa,
-        </p>{" "}
-        {/* <div className={styles.icon}>
-          <img src="src\assets\icons\hourglass-half-regular (1).svg"></img>
-        </div> */}
-      </Link>
-      <Link key="id" to="#" className={styles.capsuleCard}>
-        <FontAwesomeIcon
-          className={styles.icon}
-          icon="fa-regular fa-hourglass-half"
-        />
-        <h2 className={styles.title}> Titlu</h2>
-        <p className={styles.description}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit dolorum
-          ipsa,
-        </p>{" "}
-        {/* <div className={styles.icon}>
-          <img src="src\assets\icons\hourglass-half-regular (1).svg"></img>
-        </div> */}
-      </Link>
-      <Link key="id" to="#" className={styles.capsuleCard}>
-        <FontAwesomeIcon
-          className={styles.icon}
-          icon="fa-regular fa-hourglass-half"
-        />
-        <h2 className={styles.title}> Titlu</h2>
-        <p className={styles.description}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit dolorum
-          ipsa,
-        </p>{" "}
-        {/* <div className={styles.icon}>
-          <img src="src\assets\icons\hourglass-half-regular (1).svg"></img>
-        </div> */}
-      </Link>
-      <Link key="id" to="#" className={styles.capsuleCard}>
-        <FontAwesomeIcon
-          className={styles.icon}
-          icon="fa-regular fa-hourglass-half"
-        />
-        <h2 className={styles.title}> Titlu</h2>
-        <p className={styles.description}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit dolorum
-          ipsa,
-        </p>{" "}
-        {/* <div className={styles.icon}>
-          <img src="src\assets\icons\hourglass-half-regular (1).svg"></img>
-        </div> */}
       </Link>
 
       {/* {publicCapsules.length ? (
@@ -142,6 +55,12 @@ export const ScrollableFeed = ({ requestType }) => {
             to={`/${capsule.id}`}
             className={styles.capsuleCard}
           >
+           <div style={1 ? null : { display: "none" }}>
+          <img
+            className={styles.icon}
+            src="src\assets\icons\very-good-hourglass.svg"
+          ></img>
+        </div>
             <h2 className={styles.title}> {capsule.title}</h2>
             <p className={styles.description}>{capsule.description}</p>
           </Link>

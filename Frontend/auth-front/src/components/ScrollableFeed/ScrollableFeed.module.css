@@ -40,7 +40,6 @@
   z-index: 1; /* Asigură că este în fața imaginii de fundal */
 }
 
-/* Asigură că conținutul textului este afișat deasupra fundalului întunecat */
 .capsuleCard > * {
   position: relative;
   z-index: 2;
@@ -55,7 +54,7 @@
 
 .title {
   padding-left: 9px;
-  margin-top: 28%;
+  margin-top: 23%;
   margin-bottom: 0;
   z-index: 2;
   color: #fdfdfd;
@@ -70,8 +69,13 @@
 }
 
 .icon {
-  z-index: 2;
-  border: 5px solid red;
+  margin-left: 15px;
+  margin-top: 15px;
+
+  z-index: 5;
+  height: 12px;
+  width: 12px;
+  /* background-color: #fdfdfd; */
 }
 
 .capsuleCard:-webkit-any-link {
