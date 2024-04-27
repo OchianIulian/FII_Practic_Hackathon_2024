@@ -1,10 +1,19 @@
-import React from 'react'
-import "./Home.css"
+import React from "react";
+import styles from "./Home.module.css";
+import { ScrollableFeed } from "../ScrollableFeed/ScrollableFeed";
 
-const Home = () => {
+export const Home = () => {
   return (
-    <div>Home</div>
-  )
-}
+    <>
+      <div className={styles.mainLoginContainer}>
+        <h2 className={styles.header}>
+          {" "}
+          Step into the past and relive <span>cherished memories</span> shared
+          by our community
+        </h2>
 
-export default Home
+        <ScrollableFeed requestType={"publicCapsules"}></ScrollableFeed>
+      </div>
+    </>
+  );
+};

@@ -1,0 +1,11 @@
+.header {
+  padding-left: 10px;
+  padding-bottom: 5px;
+  margin: 5px 131px 0px 110px;
+
+  border-bottom: 2px solid #e9d6c4;
+}
+
+.header > span {
+  color: #c8976a;
+}

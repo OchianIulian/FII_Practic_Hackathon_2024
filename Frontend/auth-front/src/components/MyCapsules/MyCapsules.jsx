@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+import styles from "./MyCapsules.module.css";
+import { ScrollableFeed } from "../ScrollableFeed/ScrollableFeed";
 
-const MyCapsules = () => {
+export const MyCapsules = () => {
   return (
-    <div>MyCapsules</div>
-  )
-}
+    <>
+      <div className={styles.mainLoginContainer}>
+        <h2 className={styles.header}> Previously created capsules</h2>
 
-export default MyCapsules
+        <ScrollableFeed requestType={"myCapsules"}></ScrollableFeed>
+      </div>
+    </>
+  );
+};
