@@ -11,22 +11,22 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @AllArgsConstructor
 @RequestMapping("post")
-public class PostController {
+public class CapsuleController {
     @Autowired
     private CapsuleService capsuleService;
 
     /**
      * Create a new post
-     * @param postRequest
+     * @param capsuleRequest
      * @return
      */
     @PostMapping("/create")
-    public ResponseEntity<String> createPost(@RequestBody CapsuleRequest postRequest){
-        return capsuleService.createPost(postRequest);
+    public ResponseEntity<String> createCapsule(@RequestBody CapsuleRequest capsuleRequest){
+        return capsuleService.createCapsule(capsuleRequest);
     }
 
     @GetMapping("/get-post-by-id")
-    public ResponseEntity<String> getPostById(){
+    public ResponseEntity<String> getCapsuleById(){
         return ResponseEntity.ok("postService.createPost(postRequest)");
     }
 }

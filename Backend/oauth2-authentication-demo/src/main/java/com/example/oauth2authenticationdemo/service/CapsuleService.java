@@ -14,7 +14,7 @@ public class CapsuleService {
     CapsuleRepository capsuleRepository;
 
     public ResponseEntity<String> createCapsule(CapsuleRequest capsuleRequest) {
-        Capsule capsule = new Capsule(capsuleRequest.getUserId(), capsuleRequest.getTitle(), capsuleRequest.getDescription(), capsuleRequest.getTxtContent(), capsuleRequest.getImages(), capsuleRequest.getVideos(), capsuleRequest.getCanBeOpenedAt());
+        Capsule capsule = new Capsule(capsuleRequest.getUserId(), capsuleRequest.getTitle(), capsuleRequest.getDescription(), capsuleRequest.getTextFiles(), capsuleRequest.getPictures(), capsuleRequest.getVideos(), capsuleRequest.getCanBeOpenedAt());
         capsuleRepository.save(capsule);
         return ResponseEntity.ok("Capsule created successfully");
     }

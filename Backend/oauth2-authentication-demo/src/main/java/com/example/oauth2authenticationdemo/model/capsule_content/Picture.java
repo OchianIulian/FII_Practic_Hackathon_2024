@@ -1,12 +1,13 @@
 package com.example.oauth2authenticationdemo.model.capsule_content;
 
+import com.example.oauth2authenticationdemo.model.Capsule;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "pictures")
+@Table(name = "picture")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -20,6 +21,10 @@ public class Picture {
 
     @Column(nullable = false)
     private byte[] data;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "capsule_id", nullable = false)
+    private Capsule capsule;
 
     public Picture(String fileName, byte[] data) {
         this.fileName = fileName;
