@@ -1,6 +1,6 @@
 package com.example.oauth2authenticationdemo.config;
 
-import com.example.oauth2authenticationdemo.model.RegistrationSource;
+import com.example.oauth2authenticationdemo.enums.RegistrationSource;
 import com.example.oauth2authenticationdemo.model.User;
 import com.example.oauth2authenticationdemo.repository.UserRepository;
 import jakarta.servlet.ServletException;
