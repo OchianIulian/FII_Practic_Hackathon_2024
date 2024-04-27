@@ -17,6 +17,13 @@ public class TextFile {
     private Long id;
     private String message;
 
+    @Column(nullable = false)
+    private String fileName;
+
+    @Lob
+    @Column(nullable = false, columnDefinition = "LONGBLOB")
+    private byte[] data;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "capsule_id", nullable = false)
     private Capsule capsule;

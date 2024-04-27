@@ -26,13 +26,13 @@ public class Capsule {
     private Long userId;
     private String title;
     private String description;
-    @Column(name="txt_content")
-    @OneToMany(mappedBy = "capsule", cascade = CascadeType.ALL)
-    private List<TextFile> textFiles;
-    @OneToMany(mappedBy = "capsule", cascade = CascadeType.ALL)
-    private List<Picture> pictures;
-    @OneToMany(mappedBy = "capsule", cascade = CascadeType.ALL)
-    private List<Video> videos;
+//    @Column(name="txt_content")
+//    @OneToMany(mappedBy = "capsule", cascade = CascadeType.ALL)
+//    private List<TextFile> textFiles;
+//    @OneToMany(mappedBy = "capsule", cascade = CascadeType.ALL)
+//    private List<Picture> pictures;
+//    @OneToMany(mappedBy = "capsule", cascade = CascadeType.ALL)
+//    private List<Video> videos;
     @Column(name="created_at")
     private LocalDateTime createdAt;
     @Column(name="can_be_opened_at")
