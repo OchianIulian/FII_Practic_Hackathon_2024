@@ -7,7 +7,6 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor(force=true)
 @ToString
-public class VideoRequest {
-    public final String fileName;
-    public final byte[] data;
+public class TextFileRequest {
+    public final String message;
 }

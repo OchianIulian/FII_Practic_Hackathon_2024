@@ -17,8 +17,8 @@ public class CapsuleRequest {
     public final Long userId;
     public final String title;
     public final String description;
-    public final List<TextFile> textFiles;
-    public final List<Picture> pictures;
-    public final List<Video> videos;
+    public final List<TextFileRequest> textFiles;
+    public final List<PictureRequest> pictures;
+    public final List<VideoRequest> videos;
     public final LocalDateTime canBeOpenedAt;
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("post")
+@RequestMapping("/capsules")
 public class CapsuleController {
     @Autowired
     private CapsuleService capsuleService;
@@ -20,7 +20,7 @@ public class CapsuleController {
      * @param capsuleRequest
      * @return
      */
-    @PostMapping("/create")
+    @PostMapping("/create-capsule")
     public ResponseEntity<String> createCapsule(@RequestBody CapsuleRequest capsuleRequest){
         return capsuleService.createCapsule(capsuleRequest);
     }
