@@ -19,7 +19,8 @@ public class Picture {
     @Column(nullable = false)
     private String fileName;
 
-    @Column(nullable = false)
+    @Lob
+    @Column(nullable = false, columnDefinition = "LONGBLOB")
     private byte[] data;
 
     @ManyToOne(fetch = FetchType.LAZY)

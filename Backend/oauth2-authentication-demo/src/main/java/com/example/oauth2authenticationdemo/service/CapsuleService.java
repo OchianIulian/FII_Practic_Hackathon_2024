@@ -24,7 +24,7 @@ public class CapsuleService {
 
     public ResponseEntity<String> createCapsule(CapsuleRequest capsuleRequest) {
         try{
-            Capsule capsule = new Capsule(capsuleRequest.getUserId(), capsuleRequest.getTitle(), capsuleRequest.getDescription(), capsuleRequest.getCanBeOpenedAt());
+            Capsule capsule = new Capsule(capsuleRequest.getUserId(), capsuleRequest.getTitle(), capsuleRequest.getDescription(), capsuleRequest.getCanBeOpenedAt(), capsuleRequest.isPrivate());
             List<TextFile> textFiles = new ArrayList<>();
             for(TextFileRequest textFileRequest : capsuleRequest.getTextFiles()){
                 TextFile textFile = new TextFile(textFileRequest.getMessage());

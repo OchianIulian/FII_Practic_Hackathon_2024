@@ -21,4 +21,5 @@ public class CapsuleRequest {
     public final List<PictureRequest> pictures;
     public final List<VideoRequest> videos;
     public final LocalDateTime canBeOpenedAt;
+    public final boolean isPrivate;
 }

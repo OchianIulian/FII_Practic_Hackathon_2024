@@ -40,11 +40,12 @@ public class Capsule {
     @Column(name="is_private")
     private boolean isPrivate;
 
-    public Capsule(Long userId, String title, String description, LocalDateTime canBeOpenedAt) {
+    public Capsule(Long userId, String title, String description, LocalDateTime canBeOpenedAt, boolean isPrivate) {
         this.userId = userId;
         this.title = title;
         this.description = description;
         this.createdAt = LocalDateTime.now();
         this.canBeOpenedAt = canBeOpenedAt;
+        this.isPrivate=isPrivate;
     }
 }
