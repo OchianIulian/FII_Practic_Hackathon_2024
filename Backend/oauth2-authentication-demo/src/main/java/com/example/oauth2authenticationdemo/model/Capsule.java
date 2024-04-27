@@ -37,15 +37,15 @@ public class Capsule {
     private LocalDateTime createdAt;
     @Column(name="can_be_opened_at")
     private LocalDateTime canBeOpenedAt;
+    @Column(name="is_private")
+    private boolean isPrivate;
 
-    public Capsule(Long userId, String title, String description, List<TextFile> textFiles, List<Picture> pictures, List<Video> videos, LocalDateTime canBeOpenedAt) {
+    public Capsule(Long userId, String title, String description, LocalDateTime canBeOpenedAt, boolean isPrivate) {
         this.userId = userId;
         this.title = title;
         this.description = description;
-        this.textFiles = textFiles;
-        this.pictures = pictures;
-        this.videos = videos;
         this.createdAt = LocalDateTime.now();
         this.canBeOpenedAt = canBeOpenedAt;
+        this.isPrivate=isPrivate;
     }
 }

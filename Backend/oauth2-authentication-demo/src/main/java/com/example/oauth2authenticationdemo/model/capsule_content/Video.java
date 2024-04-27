@@ -22,7 +22,7 @@ public class Video {
     private String fileName;
 
     @Lob
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "LONGBLOB")
     private byte[] data;
 
     @ManyToOne(fetch = FetchType.LAZY)
