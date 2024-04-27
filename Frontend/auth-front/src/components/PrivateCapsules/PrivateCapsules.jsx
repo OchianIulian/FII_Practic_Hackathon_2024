@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import './PrivateCapsules.css'; 
+import { useNavigate } from 'react-router-dom';
+import './PrivateCapsules.css';
 import img from '../../assets/friends.jpg';
 
 const PrivateCapsule = () => {
@@ -7,6 +8,8 @@ const PrivateCapsule = () => {
     code: '',
     id: ''
   });
+
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -19,6 +22,14 @@ const PrivateCapsule = () => {
   const handleSubmit = () => {
     console.log(inputData);
     alert('Data submitted: ' + JSON.stringify(inputData));
+
+    // Decide where to navigate based on some condition
+    // Here it's arbitrary; replace with your logic
+    if (inputData.code === 'unlock') {
+      navigate(`/unlocked/${inputData.id}`, { state: { title: 'Memory Title', description: 'Memory Description' } });
+    } else {
+      navigate(`/locked/${inputData.id}`, { state: { title: 'Memory Title', description: 'Memory Description' } });
+    }
   };
 
   return (

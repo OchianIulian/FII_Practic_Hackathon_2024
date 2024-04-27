@@ -1,154 +1,54 @@
-import React from "react";
-import { useState } from "react";
 import styles from "./ScrollableFeed.module.css";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect } from "react";
+import { faHourglassHalf } from '@fortawesome/free-solid-svg-icons';
 
 export const ScrollableFeed = ({ requestType }) => {
-  const [publicCapsules, setPublicCapsules] = useState([]);
+  const [capsules, setCapsules] = useState([]);
 
+  // Fetch capsules data from backend based on requestType
   const fetchData = async () => {
-    if (requestType === "publicCapsules") {
-      // const response = await getVideos();
-      // setPublicCapsules(response);
-      // console.log(response);
-    } else if (requestType === "myCapsules") {
-      // const response = await getVideos();
-      // setPublicCapsules(response);
-      // console.log(response);
-    } else if (requestType === "myPrivateCapsules") {
-      // const response = await getVideos();
-      // setPublicCapsules(response);
-      // console.log(response);
+    try {
+      const response = await fetch(`https://your-api-url.com/api/capsules/${requestType}`);
+      const data = await response.json();
+      setCapsules(data);
+    } catch (error) {
+      console.error("Failed to fetch capsules:", error);
     }
   };
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [requestType]);
+
+  if (!capsules.length) {
+    return <div className={styles.feed}>Loading capsules...</div>;
+  }
 
   return (
     <div className={styles.feed}>
-      <FontAwesomeIcon
-        className={styles.icon}
-        icon="fa-regular fa-hourglass-half"
-      />
-
-      <Link key="id" to="#" className={styles.capsuleCard}>
-        <FontAwesomeIcon
-          className={styles.icon}
-          icon="fa-regular fa-hourglass-half"
-        />
-        <h2 className={styles.title}> Titlu</h2>
-        <p className={styles.description}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit dolorum
-          ipsa,
-        </p>{" "}
-        {/* <div className={styles.icon}>
-          <img src="src\assets\icons\hourglass-half-regular (1).svg"></img>
-        </div> */}
-      </Link>
-
-      <Link key="id" to="#" className={styles.capsuleCard}>
-        <FontAwesomeIcon
-          className={styles.icon}
-          icon="fa-regular fa-hourglass-half"
-        />
-        <h2 className={styles.title}> Titlu</h2>
-        <p className={styles.description}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit dolorum
-          ipsa,
-        </p>{" "}
-        {/* <div className={styles.icon}>
-          <img src="src\assets\icons\hourglass-half-regular (1).svg"></img>
-        </div> */}
-      </Link>
-      <Link key="id" to="#" className={styles.capsuleCard}>
-        <FontAwesomeIcon
-          className={styles.icon}
-          icon="fa-regular fa-hourglass-half"
-        />
-        <h2 className={styles.title}> Titlu</h2>
-        <p className={styles.description}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit dolorum
-          ipsa,
-        </p>{" "}
-        {/* <div className={styles.icon}>
-          <img src="src\assets\icons\hourglass-half-regular (1).svg"></img>
-        </div> */}
-      </Link>
-      <Link key="id" to="#" className={styles.capsuleCard}>
-        <FontAwesomeIcon
-          className={styles.icon}
-          icon="fa-regular fa-hourglass-half"
-        />
-        <h2 className={styles.title}> Titlu</h2>
-        <p className={styles.description}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit dolorum
-          ipsa,
-        </p>{" "}
-        {/* <div className={styles.icon}>
-          <img src="src\assets\icons\hourglass-half-regular (1).svg"></img>
-        </div> */}
-      </Link>
-      <Link key="id" to="#" className={styles.capsuleCard}>
-        <FontAwesomeIcon
-          className={styles.icon}
-          icon="fa-regular fa-hourglass-half"
-        />
-        <h2 className={styles.title}> Titlu</h2>
-        <p className={styles.description}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit dolorum
-          ipsa,
-        </p>{" "}
-        {/* <div className={styles.icon}>
-          <img src="src\assets\icons\hourglass-half-regular (1).svg"></img>
-        </div> */}
-      </Link>
-      <Link key="id" to="#" className={styles.capsuleCard}>
-        <FontAwesomeIcon
-          className={styles.icon}
-          icon="fa-regular fa-hourglass-half"
-        />
-        <h2 className={styles.title}> Titlu</h2>
-        <p className={styles.description}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit dolorum
-          ipsa,
-        </p>{" "}
-        {/* <div className={styles.icon}>
-          <img src="src\assets\icons\hourglass-half-regular (1).svg"></img>
-        </div> */}
-      </Link>
-      <Link key="id" to="#" className={styles.capsuleCard}>
-        <FontAwesomeIcon
-          className={styles.icon}
-          icon="fa-regular fa-hourglass-half"
-        />
-        <h2 className={styles.title}> Titlu</h2>
-        <p className={styles.description}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit dolorum
-          ipsa,
-        </p>{" "}
-        {/* <div className={styles.icon}>
-          <img src="src\assets\icons\hourglass-half-regular (1).svg"></img>
-        </div> */}
-      </Link>
-
-      {/* {publicCapsules.length ? (
-        publicCapsules.map((capsule) => (
-          <Link
-            key={capsule.id}
-            to={`/${capsule.id}`}
-            className={styles.capsuleCard}
-          >
-            <h2 className={styles.title}> {capsule.title}</h2>
+      {capsules.map(capsule => (
+        <Link
+          key={capsule.id}
+          to={{
+            pathname: `/unlocked/${capsule.id}`,
+            state: {
+              title: capsule.title,
+              description: capsule.description
+            }
+          }}
+          className={styles.capsuleCard}
+        >
+          <FontAwesomeIcon icon={faHourglassHalf} className={styles.icon} />
+          <div className={styles.cardContent}>
+            <h2 className={styles.title}>{capsule.title}</h2>
             <p className={styles.description}>{capsule.description}</p>
-          </Link>
-        ))
-      ) : (
-        <div> </div>
-      )} */}
+          </div>
+        </Link>
+      ))}
     </div>
   );
 };
+
+export default ScrollableFeed;

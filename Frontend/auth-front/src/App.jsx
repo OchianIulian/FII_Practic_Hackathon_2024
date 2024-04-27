@@ -8,6 +8,7 @@ import PrivateCapsules from './components/PrivateCapsules/PrivateCapsules';
 import {MyCapsules} from './components/MyCapsules/MyCapsules';
 import {Home} from './components/Home/Home';
 import Login from "./components/Login/Login";
+import Unlocked from './components/Unlocked/Unlocked';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/create-capsule" element={<CreateCapsule />} />
           <Route path="/private-capsules" element={<PrivateCapsules />} />
           <Route path="/my-capsules" element={<MyCapsules />} />
+          <Route path="/unlocked/:id" component={Unlocked} />
           <Route path="/login" element={<Login/>}/>
         </Routes>
       </main>
