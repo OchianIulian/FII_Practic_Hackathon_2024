@@ -2,25 +2,27 @@ package com.example.oauth2authenticationdemo.controller;
 
 
 import com.example.oauth2authenticationdemo.model.Capsule;
+import com.example.oauth2authenticationdemo.model.CapsuleIdList;
+import com.example.oauth2authenticationdemo.model.User;
 import com.example.oauth2authenticationdemo.model.capsule_content.Picture;
 import com.example.oauth2authenticationdemo.model.capsule_content.TextFile;
 import com.example.oauth2authenticationdemo.model.capsule_content.Video;
-import com.example.oauth2authenticationdemo.repository.CapsuleRepository;
-import com.example.oauth2authenticationdemo.repository.PictureRepository;
-import com.example.oauth2authenticationdemo.repository.TextFileRepository;
-import com.example.oauth2authenticationdemo.repository.VideoRepository;
+import com.example.oauth2authenticationdemo.repository.*;
 import com.example.oauth2authenticationdemo.request.CapsuleRequest;
 import com.example.oauth2authenticationdemo.service.CapsuleService;
 import com.example.oauth2authenticationdemo.utils.InMemoryMultipartFile;
 import com.example.oauth2authenticationdemo.utils.ZipUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -53,6 +55,9 @@ public class CapsuleController {
     @Autowired
     private TextFileRepository textFileRepository;
 
+    @Autowired
+    private CapsuledIdListRepository idListRepository;
+
     /**
      * Create a new post
      * @param capsuleRequest
@@ -74,6 +79,7 @@ public class CapsuleController {
         List<MultipartFile> videos = new ArrayList<>();
         List<MultipartFile> images = new ArrayList<>();
         List<MultipartFile> textFiles = new ArrayList<>();
+
 
         Optional<Capsule> capsule = capsuleRepository.findCapsuleById(capsuleId);
         if(capsule.isPresent()){
