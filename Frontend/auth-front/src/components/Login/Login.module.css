@@ -1,0 +1,43 @@
+.mainLoginContainer {
+  /* height: 120vh; */
+  margin: auto;
+}
+
+.upperContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.leftContainer {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.leftContainer h4 {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.formSigninHeading span {
+  color: #c8976a;
+}
+
+.rightImage {
+  width: 45%;
+  border-radius: 12px;
+}
+
+.tableButtons {
+  margin-top: 5px;
+  width: 50%;
+}
+
+.links {
+  text-decoration: none;
+}
