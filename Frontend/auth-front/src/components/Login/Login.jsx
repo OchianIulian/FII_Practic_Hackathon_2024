@@ -3,14 +3,6 @@ import styles from "./Login.module.css";
 import { ScrollableFeed } from "../ScrollableFeed/ScrollableFeed";
 
 function Login() {
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const formData = new FormData(event.target);
-  //   const username = formData.get("username");
-  //   const password = formData.get("password");
-  //   // Trimite datele la server sau efectuează operațiile de autentificare
-  // };
-
   return (
     <div className={styles.mainLoginContainer}>
       <div className={styles.upperContainer}>
@@ -38,7 +30,7 @@ function Login() {
                 <td>
                   <a
                     className={styles.links}
-                    href="http://localhost:8080/oauth2/authorization/github"
+                    href="http://localhost:8080/oauth2/authorization/gmail"
                   >
                     <button>Gmail</button>
                   </a>
