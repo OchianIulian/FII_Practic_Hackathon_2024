@@ -13,6 +13,8 @@ import com.example.oauth2authenticationdemo.request.CapsuleRequest;
 import com.example.oauth2authenticationdemo.service.CapsuleService;
 import com.example.oauth2authenticationdemo.utils.InMemoryMultipartFile;
 import com.example.oauth2authenticationdemo.utils.ZipUtil;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.FileUtils;
@@ -24,6 +26,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -99,6 +104,32 @@ public class CapsuleController {
     public ResponseEntity<List<Capsule>> getOwnCapsules(@RequestParam Long userId){
         List<Capsule> capsules = capsuleService.getOwnCapsules(userId);
         return new ResponseEntity<>(capsules, HttpStatus.OK);
+    }
+
+
+    @GetMapping("/all_public")
+    public ResponseEntity<List<Capsule>> getAllCapsules(){
+        List<Capsule> capsules = capsuleRepository.getAllPublicCapsules();
+        if (capsules.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+
+        LocalDateTime date1 = LocalDateTime.now();
+
+
+        List<Capsule> capsuleList = new ArrayList<>();
+        for(Capsule capsule : capsules){
+            LocalDateTime date2 = capsule.getCanBeOpenedAt();
+            if(date1.isAfter(date2)){
+                capsule.setUnlocked(true);
+            }
+
+            if(!capsule.isPrivate()) {
+                capsuleList.add(capsule);
+            }
+        }
+
+        return ResponseEntity.ok(capsuleList);
     }
 
 }
