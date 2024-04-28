@@ -5,6 +5,7 @@ import CapsulePreview from './CapsulePreview';
 
 const CreateCapsule = () => {
   const [capsuleData, setCapsuleData] = useState({
+    userId: '',
     title: '',
     description: '',
     canBeOpenedAt: '',
@@ -17,6 +18,7 @@ const CreateCapsule = () => {
 
   const pngRef = useRef(null);
   const textFileRef = useRef(null);
+  const videoRef = useRef(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -43,6 +45,9 @@ const CreateCapsule = () => {
     e.preventDefault();
 
     const formData = new FormData();
+
+
+    formData.append('userId', 1);
     formData.append('title', capsuleData.title);
     formData.append('description', capsuleData.description);
     formData.append('canBeOpenedAt', capsuleData.canBeOpenedAt);
@@ -50,7 +55,8 @@ const CreateCapsule = () => {
     
     
     if (capsuleData.png) {
-      formData.append('images', capsuleData.png); 
+      console.log("s-a adaugat un png");
+      formData.append('pictures', capsuleData.png); 
     }
     if (capsuleData.video) {
       formData.append('videos', capsuleData.video); 
@@ -59,10 +65,10 @@ const CreateCapsule = () => {
       formData.append('textFiles', capsuleData.textFile); 
     }
 
-    axios.post('/', formData, {
+    axios.post('http://localhost:8080/api/saveData', formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
-      }
+      }, withCredentials: true
     })
     .then(response => {
       console.log(response.data);
@@ -72,15 +78,15 @@ const CreateCapsule = () => {
     });
   };
 
-  const [showVideoPopup, setShowVideoPopup] = useState(false);
+  // const [showVideoPopup, setShowVideoPopup] = useState(false);
 
-  const handleVideoClick = () => {
-    setShowVideoPopup(true); 
-  };
+  // const handleVideoClick = () => {
+  //   videoRef.current.click();
+  // };
 
-  const closeVideoPopup = () => {
+  {/*const closeVideoPopup = () => {
     setShowVideoPopup(false); 
-  };
+  };*/}
   return (
     <div className="create-capsule">
       <CapsulePreview data={capsuleData} />
@@ -101,7 +107,7 @@ const CreateCapsule = () => {
           />
           <input
             type="date"
-            name="dateToOpen"
+            name="canBeOpenedAt"
             value={capsuleData.dateToOpen}
             onChange={handleInputChange}
           />
@@ -126,15 +132,11 @@ const CreateCapsule = () => {
           <input
             type="file"
             ref={pngRef}
-            name="png"
+            name="pictures"
             accept="image/png"
             onChange={handleFileChange}
             style={{ display: 'none' }} 
           />
-          
-          <button type="button" onClick={handleVideoClick}>
-          Add Video to Capsule
-        </button>
 
           <button type="button" onClick={() => triggerFileInput(textFileRef)}>
             Add Text File to Capsule
@@ -142,21 +144,37 @@ const CreateCapsule = () => {
           <input
             type="file"
             ref={textFileRef}
-            name="textFile"
+            name="textFiles"
             accept="text/plain"
             onChange={handleFileChange}
             style={{ display: 'none' }}
           />
-          {showVideoPopup && (
+
+            <button type="button" onClick={() => triggerFileInput(videoRef)}>
+              Add Video to Capsule
+            </button>
+            <input
+              type="file"
+              ref={videoRef}
+              name="videos"
+              accept="video/*"
+              onChange={handleFileChange}
+              style={{ display: 'none' }}
+            />
+          {/*{showVideoPopup && (
           <div className="video-popup">
             <div className="video-popup-content">
               <h2>Premium Feature</h2>
               <p>Adding videos is a premium feature.<br/> Please go to payment page to access this feature.</p>
               <button onClick={closeVideoPopup}>Close</button>
             </div>
-          </div>
-        )}
-
+          </div>*/}
+                
+          <input
+            type="hidden"
+            name="userId"
+            value={1} // Replace 'userId' with the variable holding the mock userId
+          />
           <button type="submit">Create Capsule</button>
         </form>
       </div>

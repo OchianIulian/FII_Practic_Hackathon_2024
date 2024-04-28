@@ -1,46 +1,29 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
-import search from "../../assets/search.png"
+import searchIcon from "../../assets/search.png";
+import logoIcon from "../../assets/iconTimeless.png";
+
 
 const Navbar = () => {
- return (
-  <nav>
-   <ul className="nav__list">
-     <div className="nav-middle flex-div">
-        <div className='search-box flex-div'>
-            <input type="text" placeholder='Search'/>
-            <img src={search} alt=""/>
-        </div>
+  return (
+    <nav className="navbar">
+      <div className="navbar-section">
+        <img src={logoIcon} alt="Timeless Memories Logo" className="logo" />
       </div>
-     <li className="nav__item">
-       <NavLink to="/private-capsules" className="nav__link">
-         Private Capsules
-       </NavLink>
-     </li>
-     <li className="nav__item">
-       <NavLink to="/my-capsules" className="nav__link">
-         My capsules
-       </NavLink>
-     </li>
-     <li className="nav__item">
-       <NavLink to="/create-capsule" className="nav__link">
-         Create Capsule
-       </NavLink>
-     </li>
-     <li className="nav__item">
-       <NavLink to="/contact" className="nav__link">
-         Contact Us
-       </NavLink>
-     </li>
-     <li className="nav__item">
-       <NavLink to="/" className="nav__link">
-         Home
-       </NavLink>
-     </li>
-   </ul>
-   </nav>
- );
+      <div className="navbar-section search-container">
+        <input type="text" placeholder="Search" className="search-input" />
+        <img src={searchIcon} alt="Search" className="search-icon" />
+      </div>
+      <div className="navbar-section nav-links">
+        <NavLink to="/private-capsules">Private Capsules</NavLink>
+        <NavLink to="/my-capsules">My Capsules</NavLink>
+        <NavLink to="/create-capsule">Create Capsule</NavLink>
+        <NavLink to="/contact">Contact Us</NavLink>
+        <NavLink to="/">Home</NavLink>
+      </div>
+    </nav>
+  );
 };
 
 export default Navbar;
