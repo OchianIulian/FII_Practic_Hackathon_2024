@@ -23,6 +23,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -57,6 +59,8 @@ public class CapsuleController {
 
     @Autowired
     private CapsuledIdListRepository idListRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     /**
      * Create a new post
@@ -137,5 +141,25 @@ public class CapsuleController {
 
         return ResponseEntity.ok(capsuleList);
     }
+
+    @GetMapping("/get-auth-uid")
+    public Long getUid(){
+        String email = "asd";
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated()) {
+            Object principal = authentication.getPrincipal();
+            if (principal instanceof DefaultOAuth2User) {
+                email = ((DefaultOAuth2User) principal).getAttribute("email");
+                // Utilizează variabila 'email' pentru a accesa adresa de email a utilizatorului
+            }
+        }
+
+        Optional<User> user = userRepository.findByEmail(email);
+        if(user.isPresent()){
+            return user.get().getId();
+        }
+        return -1L;
+    }
+
 
 }
