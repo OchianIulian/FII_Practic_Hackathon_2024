@@ -50,13 +50,13 @@ public class CapsuleController {
 
     /**
      * Create a new post
-     * @param capsuleRequest
+     * @param
      * @return
      */
-    @PostMapping("/create-capsule")
-    public ResponseEntity<String> createCapsule(@RequestBody CapsuleRequest capsuleRequest){
-        return capsuleService.createCapsule(capsuleRequest);
-    }
+//    @PostMapping("/create-capsule")
+//    public ResponseEntity<String> createCapsule(@RequestBody CapsuleRequest capsuleRequest){
+//        return capsuleService.createCapsule(capsuleRequest);
+//    }
 
     @GetMapping("/get-post-by-id")
     public ResponseEntity<String> getCapsuleById(){

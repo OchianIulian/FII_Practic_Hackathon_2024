@@ -30,7 +30,7 @@ function Login() {
                 <td>
                   <a
                     className={styles.links}
-                    href="http://localhost:8080/oauth2/authorization/github"
+                    href="http://localhost:8080/oauth2/authorization/google"
                   >
                     <button>GitHub</button>
                   </a>
@@ -38,7 +38,7 @@ function Login() {
                 <td>
                   <a
                     className={styles.links}
-                    href="http://localhost:8080/oauth2/authorization/github"
+                    href="http://localhost:8080/oauth2/authorization/google"
                   >
                     <button>Gmail</button>
                   </a>

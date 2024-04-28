@@ -41,8 +41,8 @@ public class FormDataService {
                     byte[] data = textFile.getBytes();
                     String filename = textFile.getOriginalFilename();
                     TextFile textFileEntity = new TextFile();
-                    String content = new String(data);
-                    textFileEntity.setMessage(content);
+//                    String content = new String(data);
+//                    textFileEntity.setMessage(content);
                     textFileEntity.setFileName(filename);
                     textFileEntity.setData(data);
                     textFileEntity.setCapsule(capsule);
