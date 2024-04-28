@@ -1,12 +1,27 @@
 .feed {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  overflow-y: scroll;
+  padding: 20px; */
+  /* overflow-y: scroll; */
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, auto));
+  align-items: center;
+  justify-content: center;
+
+  grid-column-gap: 8px;
+  grid-row-gap: 14px;
+
+  margin-top: 15px;
 }
 
 .capsuleCard {
+  height: 190px;
+  width: 320px;
+
+  border-radius: 25px;
+
   display: flex;
   flex-direction: column;
 
@@ -16,6 +31,16 @@
   transition: transform 0.3s ease;
 
   position: relative;
+
+  /* display: flex;
+  flex-direction: column;
+
+  background-image: url("https://source.unsplash.com/random?family");
+  background-size: cover;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+
+  position: relative; */
 }
 
 .capsuleCard::after {
@@ -39,8 +64,13 @@
 }
 
 .icon {
-  font-size: 24px;
-  color: #555;
+  margin-left: 15px;
+  margin-top: 15px;
+
+  z-index: 5;
+  height: 12px;
+  width: 12px;
+  /* background-color: #fdfdfd; */
 }
 
 .title {
