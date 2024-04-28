@@ -40,7 +40,7 @@ public class SecurityConfig {
                 .oauth2Login(oAuth2 ->{
                     oAuth2.successHandler(oAutn2LoginSuccessHandler);
                     //Setez login page custom
-                    //oAuth2.loginPage("urlforlogin").permitAll();
+                    //oAuth2.loginPage("http://localhost:5173/login").permitAll();
                 })
                 .build();
     }
@@ -53,7 +53,7 @@ public class SecurityConfig {
     @Bean
     CorsConfigurationSource corsConfigurationSource(){
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of(frontendUrl));
+        configuration.setAllowedOrigins(List.of(frontendUrl, "localhost:8080"));
         configuration.addAllowedHeader("*");
         configuration.addAllowedMethod("*");
         configuration.setAllowCredentials(true);

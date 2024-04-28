@@ -13,9 +13,9 @@ function CapsulePreview({ data }) {
     <div className="capsule-preview">
       {data.title && <h3>{data.title}</h3>}
       {data.description && <p>{data.description}</p>}
-      {data.coverImage && (
+      {/* {data.coverImage && (
         <img src={getObjectURL(data.coverImage)} alt="Cover Preview" />
-      )}
+      )} */}
       {/* Display other file types as needed */}
     </div>
   );
@@ -24,9 +24,9 @@ CapsulePreview.propTypes = {
     data: PropTypes.shape({
       title: PropTypes.string,
       description: PropTypes.string,
-      dateToOpen: PropTypes.string,
+      canBeOpenedAt: PropTypes.string,
       isPrivate: PropTypes.bool,
-      coverImage: PropTypes.instanceOf(File), 
+      //coverImage: PropTypes.instanceOf(String), 
     })
   };
 

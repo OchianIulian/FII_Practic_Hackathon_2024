@@ -13,7 +13,9 @@ const CreateCapsule = () => {
     coverImage: '',
     png: null,
     video: null,
-    textFile: null,
+    textFiles: [], // Initialize as an empty array
+    pictures: [], // Initialize as an empty array
+    videos: [], // Initialize as an empty array
   });
 
   const pngRef = useRef(null);
@@ -30,10 +32,10 @@ const CreateCapsule = () => {
 
   const handleFileChange = (e) => {
     const { name } = e.target;
-    const file = e.target.files[0];
+    const files = e.target.files;
     setCapsuleData((prevData) => ({
       ...prevData,
-      [name]: file,
+      [name]: [...prevData[name], ...files],
     }));
   };
 
@@ -46,35 +48,47 @@ const CreateCapsule = () => {
 
     const formData = new FormData();
 
-
-    formData.append('userId', 1);
+    formData.append('userId', 1); // Replace '1' with the variable holding the mock userId
     formData.append('title', capsuleData.title);
     formData.append('description', capsuleData.description);
     formData.append('canBeOpenedAt', capsuleData.canBeOpenedAt);
-    formData.append('isPrivate', capsuleData.isPrivate);
+    // Convert boolean to string before appending
+    formData.append('isPrivate', capsuleData.isPrivate.toString());
     
-    
-    if (capsuleData.png) {
-      console.log("s-a adaugat un png");
-      formData.append('pictures', capsuleData.png); 
-    }
-    if (capsuleData.video) {
-      formData.append('videos', capsuleData.video); 
-    }
-    if (capsuleData.textFile) {
-      formData.append('textFiles', capsuleData.textFile); 
-    }
+      // Append all files
+  capsuleData.textFiles.forEach((file) => {
+    formData.append('textFiles', file);
+  });
+  capsuleData.pictures.forEach((file) => {
+    formData.append('pictures', file);
+  });
+  capsuleData.videos.forEach((file) => {
+    formData.append('videos', file);
+  });
 
+    axios.post('http://localhost:8080/api/saveData', formData, {
     axios.post('http://localhost:8080/api/saveData', formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
+      }, withCredentials: true
       }, withCredentials: true
     })
     .then(response => {
       console.log(response.data);
     })
     .catch(error => {
-      console.error('There was an error!', error);
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.error('Server responded with error status:', error.response.status);
+        console.error('Error message from server:', error.response.data);
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.error('No response received from server:', error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.error('Error setting up the request:', error.message);
+      }
     });
   };
 
@@ -99,14 +113,14 @@ const CreateCapsule = () => {
             value={capsuleData.title}
             onChange={handleInputChange}
           />
-          <textarea
+          <input
             name="description"
             placeholder="Add a description..."
             value={capsuleData.description}
             onChange={handleInputChange}
           />
           <input
-            type="date"
+            type="text"
             name="canBeOpenedAt"
             value={capsuleData.dateToOpen}
             onChange={handleInputChange}
@@ -121,11 +135,11 @@ const CreateCapsule = () => {
               onChange={(e) => setCapsuleData((prevData) => ({ ...prevData, isPrivate: e.target.checked }))}
             />
           </div>
-          <input
+          {/* <input
             type="file"
             name="coverImage"
             onChange={handleFileChange}
-          />
+          /> */}
           <button type="button" onClick={() => triggerFileInput(pngRef)}>
             Add Png to Capsule
           </button>
