@@ -23,9 +23,9 @@
   border-radius: 25px;
 
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
 
-  background-image: url("https://source.unsplash.com/random?family");
+  /* background-image: url("https://source.unsplash.com/random?family"); */
   background-size: cover;
   overflow: hidden;
   transition: transform 0.3s ease;
@@ -76,7 +76,7 @@
 .title {
   padding-left: 9px;
   margin-top: 23%;
-  margin-bottom: 0;
+  margin-bottom: 3px;
   z-index: 2;
   color: #fdfdfd;
 }
@@ -93,7 +93,7 @@
   margin-left: 15px;
   margin-top: 15px;
 
-  z-index: 5;
+  z-index: 2;
   height: 12px;
   width: 12px;
   /* background-color: #fdfdfd; */
