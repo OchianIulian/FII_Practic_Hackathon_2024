@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import "./Locked.css";  // Ensure you have CSS for styling
+import "./Locked.css";
 
 const Locked = () => {
   const location = useLocation();
@@ -9,7 +9,6 @@ const Locked = () => {
   const handlePayment = () => {
     console.log("Payment initiated for: ", title);
     alert("Initiating payment...");
-    // Add your payment integration here
   };
 
   return (

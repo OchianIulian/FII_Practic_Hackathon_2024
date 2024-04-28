@@ -4,7 +4,6 @@ import "./Unlocked.css";
 
 const Unlocked = () => {
   const location = useLocation();
-  // Extracting capsule_id and token from location.state
   const { id, token, title, description } = location.state || { 
     id: '1', 
     token: '2', 
@@ -14,7 +13,6 @@ const Unlocked = () => {
 
   const handleDownload = async () => {
     try {
-      // Constructing the URL dynamically based on the capsule_id and token
       const response = await fetch(`http://localhost:8080/capsule/get-capsule/${id}/${token}`, { method: 'GET' });
       if (response.ok) {
         const blob = await response.blob();

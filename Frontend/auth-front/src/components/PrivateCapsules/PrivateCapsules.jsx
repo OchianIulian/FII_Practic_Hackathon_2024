@@ -22,9 +22,7 @@ const PrivateCapsule = () => {
   const handleSubmit = () => {
     console.log(inputData);
     alert('Data submitted: ' + JSON.stringify(inputData));
-
-    // Decide where to navigate based on some condition
-    // Here it's arbitrary; replace with your logic
+    
     if (inputData.code === 'unlock') {
       navigate(`/unlocked/${inputData.id}`, { state: { title: 'Memory Title', description: 'Memory Description' } });
     } else {

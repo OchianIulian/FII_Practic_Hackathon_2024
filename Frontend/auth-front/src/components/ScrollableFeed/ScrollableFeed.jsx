@@ -46,7 +46,7 @@ export const ScrollableFeed = ({ requestType }) => {
         </p>{" "}
       </Link>
 
-      {/* {publicCapsules.length ? (
+       {/* {publicCapsules.length ? (
         publicCapsules.map((capsule) => (
           <Link
             key={capsule.id}
@@ -59,7 +59,7 @@ export const ScrollableFeed = ({ requestType }) => {
             src="src\assets\icons\very-good-hourglass.svg"
           ></img>
         </div>
-            <h2 className={styles.title}> {capsule.title}</h2>
+            <h2 className={styles.title}> {capsule.title}</h2> */}
 
       {capsules.map(capsule => (
         <Link
@@ -76,7 +76,6 @@ export const ScrollableFeed = ({ requestType }) => {
           <FontAwesomeIcon icon={faHourglassHalf} className={styles.icon} />
           <div className={styles.cardContent}>
             <h2 className={styles.title}>{capsule.title}</h2>
-
             <p className={styles.description}>{capsule.description}</p>
           </div>
         </Link>
