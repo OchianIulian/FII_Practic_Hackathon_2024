@@ -1,0 +1,30 @@
+/* color scheme:
+fdfdfd alb
+e9d6c4 crem deschis
+c8976a crem
+a97f58 crem inchid hover
+292929 negru */
+
+body {
+  background-color: #fdfdfd;
+  font-family: sans-serif;
+  color: #292929;
+}
+button {
+  border-radius: 12px;
+  border: none;
+  height: 33px;
+  min-width: 95px;
+
+  color: #fdfdfd;
+  font-weight: 500;
+  font-size: 15px;
+
+  background-color: #c8976a;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #a97f58;
+}
