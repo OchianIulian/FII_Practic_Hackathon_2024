@@ -108,6 +108,8 @@
   text-decoration: none;
   color: #292929;
   cursor: pointer;
+}
+
 .capsuleCard:-webkit-any-link {
   text-decoration: none;
   color: #292929;
@@ -117,6 +119,7 @@
 .capsuleCard:-webkit-any-link:hover {
   cursor: pointer;
   transform: scale(1.02);
+}
 .capsuleCard:-webkit-any-link:hover {
   cursor: pointer;
   transform: scale(1.02);

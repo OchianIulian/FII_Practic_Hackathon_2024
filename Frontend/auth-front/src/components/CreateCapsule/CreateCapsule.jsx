@@ -67,10 +67,8 @@ const CreateCapsule = () => {
   });
 
     axios.post('http://localhost:8080/api/saveData', formData, {
-    axios.post('http://localhost:8080/api/saveData', formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
-      }, withCredentials: true
       }, withCredentials: true
     })
     .then(response => {
