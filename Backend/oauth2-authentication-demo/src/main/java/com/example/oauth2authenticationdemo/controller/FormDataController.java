@@ -27,8 +27,4 @@ public class FormDataController {
         return formDataService.saveFormData(userId, title, description, textFiles, pictures, videos, canBeOpenedAt, isPrivate);
     }
 
-//    @PostMapping("/create-capsule")
-//    public ResponseEntity<String> createCapsule(@RequestBody CapsuleRequest capsuleRequest){
-//        return capsuleService.createCapsule(capsuleRequest);
-//    }
 }

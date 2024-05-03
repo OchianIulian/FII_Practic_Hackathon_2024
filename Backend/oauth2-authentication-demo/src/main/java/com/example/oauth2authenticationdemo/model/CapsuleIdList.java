@@ -29,14 +29,8 @@ public class CapsuleIdList {
     @ElementCollection
     private List<Long> listOfIds = new ArrayList<>();
 
-    public CapsuleIdList(Long capsuleId, Long listOfIds) {
-        this.capsuleId = capsuleId;
-        userId = capsuleId;
-        listOfIds = listOfIds;
-    }
 
     public void addIdToList(Long id){
         listOfIds.add(id);
     }
-    // Constructori, getteri și setteri
 }

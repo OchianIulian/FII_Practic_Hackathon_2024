@@ -10,6 +10,7 @@ import com.example.oauth2authenticationdemo.model.capsule_content.Video;
 import com.example.oauth2authenticationdemo.repository.*;
 import com.example.oauth2authenticationdemo.request.CapsuleRequest;
 import com.example.oauth2authenticationdemo.service.CapsuleService;
+import com.example.oauth2authenticationdemo.service.UserService;
 import com.example.oauth2authenticationdemo.utils.InMemoryMultipartFile;
 import com.example.oauth2authenticationdemo.utils.ZipUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -49,6 +50,9 @@ public class CapsuleController {
     private CapsuleService capsuleService;
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     private PictureRepository pictureRepository;
 
     @Autowired
@@ -80,34 +84,7 @@ public class CapsuleController {
 
     @GetMapping("/get-capsule/{capsuleId}/{postToken}")
     public ResponseEntity<byte[]> getCapsule(@PathVariable Long capsuleId, @PathVariable Long postToken) throws IOException {
-        List<MultipartFile> videos = new ArrayList<>();
-        List<MultipartFile> images = new ArrayList<>();
-        List<MultipartFile> textFiles = new ArrayList<>();
-
-
-        Optional<Capsule> capsule = capsuleRepository.findCapsuleById(capsuleId);
-        if(capsule.isPresent()){
-            List<Video> videosList = videoRepository.findByCapsuleId(capsuleId);
-            for(Video video : videosList){
-                videos.add(new InMemoryMultipartFile(video.getFileName(), video.getFileName(), video.getData()));
-            }
-
-            List<Picture> pictureList = pictureRepository.findByCapsuleId(capsuleId);
-            for(Picture picture : pictureList){
-                images.add(new InMemoryMultipartFile(picture.getFileName(), picture.getFileName(), picture.getData()));
-            }
-
-            List<TextFile> textFileList = textFileRepository.findByCapsuleId(capsuleId);
-            for(TextFile textFile : textFileList){
-                textFiles.add(new InMemoryMultipartFile(textFile.getFileName(), textFile.getFileName(), textFile.getData()));
-            }
-        }
-
-        File zipFile = ZipUtil.createZipFile(videos, images, textFiles);
-        byte[] zipBytes = FileUtils.readFileToByteArray(zipFile);
-        return ResponseEntity.ok()
-                .header("Content-Disposition", "attachment; filename=files.zip")
-                .body(zipBytes);
+        return capsuleService.zipCapsule(capsuleId, postToken);
     }
 
     @GetMapping("/get-own-capsules")
@@ -119,46 +96,12 @@ public class CapsuleController {
 
     @GetMapping("/all_public")
     public ResponseEntity<List<Capsule>> getAllCapsules(){
-        List<Capsule> capsules = capsuleRepository.getAllPublicCapsules();
-        if (capsules.isEmpty()) {
-            return ResponseEntity.noContent().build();
-        }
-
-        LocalDateTime date1 = LocalDateTime.now();
-
-
-        List<Capsule> capsuleList = new ArrayList<>();
-        for(Capsule capsule : capsules){
-            LocalDateTime date2 = capsule.getCanBeOpenedAt();
-            if(date1.isAfter(date2)){
-                capsule.setUnlocked(true);
-            }
-
-            if(!capsule.isPrivate()) {
-                capsuleList.add(capsule);
-            }
-        }
-
-        return ResponseEntity.ok(capsuleList);
+        return capsuleService.getAllCapsules();
     }
 
     @GetMapping("/get-auth-uid")
     public Long getUid(){
-        String email = "asd";
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null && authentication.isAuthenticated()) {
-            Object principal = authentication.getPrincipal();
-            if (principal instanceof DefaultOAuth2User) {
-                email = ((DefaultOAuth2User) principal).getAttribute("email");
-                // Utilizează variabila 'email' pentru a accesa adresa de email a utilizatorului
-            }
-        }
-
-        Optional<User> user = userRepository.findByEmail(email);
-        if(user.isPresent()){
-            return user.get().getId();
-        }
-        return -1L;
+        return userService.getUserId();
     }
 
 
