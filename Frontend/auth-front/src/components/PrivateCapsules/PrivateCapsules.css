@@ -1,59 +1,61 @@
 .private-capsule-container {
-    display: flex;
-    align-items: center; 
-    justify-content: center;
-    gap: 40px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
 }
-  .image-container {
-    flex: 1; 
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-  }
-  
-  .image-container img {
-    margin-top: 100px;
-    max-width: 90%;
-    height: auto;
-    max-height: 95vh;
-    border-radius: 12px;
-  }
-  
-  .form-container {
-    flex: 1; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    max-width: 600px; 
-    margin-right: 100px;
-  }
-  
-  .form-container input,
-  .form-container button {
-    margin-bottom: 10px;
-    padding: 10px;
-    font-size: 1rem; 
-    border-radius: 12px;
-  }
-  
-  .form-container button {
-    background-color: #c8976a;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    border-radius: 12px;
-  }
-  
-  .form-container button:hover {
-    background-color: #a97f58;
-  }
-  
-  p{
-    color:#c8976a;
-    font-weight: bold;
-    font-size: 1.6rem;
-  }
-  .highlight {
-    color: #292929;
-  }
+.image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container img {
+  margin-top: 100px;
+  max-width: 90%;
+  height: auto;
+  max-height: 95vh;
+  border-radius: 12px;
+}
+
+.form-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 500px;
+  margin-right: 100px;
+}
+
+.form-container input,
+.form-container button {
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 12px;
+}
+
+.form-container button {
+  margin: auto;
+  width: 50px;
+  background-color: #c8976a;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 12px;
+}
+
+.form-container button:hover {
+  background-color: #a97f58;
+}
+
+p {
+  color: #c8976a;
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+.highlight {
+  color: #292929;
+}

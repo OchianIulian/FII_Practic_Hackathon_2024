@@ -15,7 +15,7 @@ public class TextFile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String message;
+//    private String message;
 
     @Column(nullable = false)
     private String fileName;
@@ -28,7 +28,7 @@ public class TextFile {
     @JoinColumn(name = "capsule_id", nullable = false)
     private Capsule capsule;
 
-    public TextFile(String message) {
-        this.message = message;
-    }
+//    public TextFile(String message) {
+//        this.message = message;
+//    }
 }
